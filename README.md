@@ -5,17 +5,15 @@ TaskFlow database repo — owns the **data model** (ADR-001). Part of a spec-dri
 | Repo | Role |
 |------|------|
 | [taskflow-spec](https://github.com/Sameer-Ahmed-S/taskflow-spec) | **Single source of truth**: requirements, contracts, ADRs |
-| **taskflow-db** (this) | Postgres schema + migrations |
+| **taskflow-db** (this) | SQLite schema + migrations (ADR-005) |
 | [taskflow-backend](https://github.com/Sameer-Ahmed-S/taskflow-backend) | Express API implementing the contract |
 | [taskflow-frontend](https://github.com/Sameer-Ahmed-S/taskflow-frontend) | React SPA |
 
 ## Run locally
 
-```sh
-docker compose up -d
-```
-
-Postgres 16 on `localhost:5432`, db/user/password: `taskflow`. Migrations in `migrations/` auto-apply on first start.
+Nothing to run here — the database is an embedded SQLite file (`taskflow.db`) that the
+**backend creates and migrates automatically at startup** from `migrations/` (ADR-005).
+Just start the backend (`npm run dev` in `taskflow-backend`).
 
 ## Change process (SDD)
 
